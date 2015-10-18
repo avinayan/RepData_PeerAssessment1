@@ -1,18 +1,3 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
-
-
-## Loading and preprocessing the data
-
-1. The file is first read as a csv file using the read.csv() command.
-2. The overview of the data is obtained used head, summary and str commands.
-3. Data is then transformed by converting steps to numeric. Interval is split into hours and minutes and also converted to a fator for later use.
-
-```{r simulation, echo = TRUE}
 # Run this file from thr RepData_PeerAssessment1 directory
 # Load the File
 ActivityData <- read.csv("activity.csv")
@@ -30,16 +15,7 @@ ActivityData$interval <- as.factor(ActivityData$interval)
 
 str(ActivityData)
 summary(ActivityData)
-```
 
-
-## What is mean total number of steps taken per day?
-
-1. Using the *reshape2* package, the processed data is melted first. Using dcast based on date, then the total number of steps per day is calculated.
-2. The total number of steps per day calculated from the previous step is used to draw the histogram ('Histogram1.png' is available).
-3. Using the total number of steps per day calculated from the first step for each of the 61 days, the mean and median total number of steps taken per day is calculated.
-
-```{r, echo = TRUE}
 # Total Number of Steps per day
 library(reshape2)
 MeltedActivityData <- melt(ActivityData, id = c("date", "hour", "minutes", "interval"))
@@ -55,15 +31,7 @@ dev.off()
 # Mean and Median Number of Steps per day
 mean(StepsPerDay$steps, na.rm = TRUE)
 median(StepsPerDay$steps, na.rm = TRUE)
-```
 
-## What is the average daily activity pattern?
-
-1. To calculate the average steps per interval, the dcast command based on interval is used.
-2. The Time Series is then plotted based on the dcast output, with interval along the X-axis and the average number of steps along the Y-axis ('TimeSeries1.png' is available).
-3. Using the which.max command the interval with the maximum number of average steps is obtained. The answer was interval number 104, which is between 8:35 am and 8:40 am.
-
-```{r, echo = TRUE}
 # Average Number of Steps per interval
 StepsPerInterval <- dcast(MeltedActivityData, interval ~ variable, fun.aggregate = mean, na.rm = TRUE)
 StepsPerInterval$interval <- as.numeric(StepsPerInterval$interval)
@@ -77,16 +45,7 @@ dev.off()
 # Interval with Max Avg number of Steps
 MaxInterval = which.max(StepsPerInterval$steps)
 StepsPerInterval[MaxInterval,]
-```
 
-## Imputing missing values
-1. The number of NAs is obtained by summing on the is.na command. There were 2304 NAs.
-2. The average for that interval calculated from the previous stage of the project was used to impute values into these NAs.
-3. Again the newly imputed data is melted and dcasted to obtain the steps per interval for this imputed data set.
-4. The revised histogram is then drawn based on the new data set. Similarly, the mean and median are calculated using the new data set.
-5. The approach to impute the median value for NAs is a conservative approach. The addition of NAs resulted in adding more mass to the first bin of the histogram. It also brought down the mean on the Total Number of Steps per day. The median however did not change.
-
-```{r, echo = TRUE}
 # Number of missing values
 sum(is.na(ActivityData$steps))
 
@@ -110,17 +69,6 @@ dev.off()
 mean(StepsPerDayImputed$steps, na.rm = TRUE)
 median(StepsPerDayImputed$steps, na.rm = TRUE)
 
-```
-
-
-## Are there differences in activity patterns between weekdays and weekends?
-
-1. Using a combination of weekdays() function and teh subsetting logic, two new data sets are created, one each for Weekdays and Weekends.
-2. Using the two new data sets, melting and dcasting are done on these data sets.
-3. Using the par command, the time series for the two data sets are drawn one below the other to compare the patterns during weekdays and during weekends.
-4. It can be observed that during the weekdays, the number of steps is low during the day time (i.e. the normal business hours).
-
-```{r, echo = TRUE}
 # Add a new variable for Weekday and Weekend
 ImputedActivityData[weekdays(as.Date(ImputedActivityData$date)) %in% c("Saturday", "Sunday"), 6] <- "Weekend"
 ImputedActivityData[!weekdays(as.Date(ImputedActivityData$date)) %in% c("Saturday", "Sunday"), 6] <- "Weekday"
@@ -148,4 +96,3 @@ plot(WeekendStepsPerInterval$interval, WeekendStepsPerInterval$steps, type = "l"
      xlab = "Interval", ylab = "Average Steps", col = "red", main = "Weekend")
 dev.off()
 
-```

@@ -1,0 +1,292 @@
+2+9=
+exit
+2+9
+makeVector <- function(x = numeric()) {#
+        m <- NULL#
+        set <- function(y) {#
+                x <<- y#
+                m <<- NULL#
+        }#
+        get <- function() x#
+        setmean <- function(mean) m <<- mean#
+        getmean <- function() m#
+        list(set = set, get = get,#
+             setmean = setmean,#
+             getmean = getmean)#
+}
+cachemean <- function(x, ...) {#
+        m <- x$getmean()#
+        if(!is.null(m)) {#
+                message("getting cached data")#
+                return(m)#
+        }#
+        data <- x$get()#
+        m <- mean(data, ...)#
+        x$setmean(m)#
+        m#
+}
+makevector (10)
+x = numeric()
+x
+numeric(0)
+numeric()
+add <- function (a, b) {}
+add <- function (a, b) {
+a + b
+}
+c <- add (1, 11)
+c
+list
+symbold
+symbols
+ls()
+makeVector(10, 20, 30)
+makeVector([10, 20, 30])
+makeVector([10 20 30])
+makeVector(10)
+z <- makeVector(10)
+z
+rm z
+rm(z)
+x <- [1, 2, 3, 4, 5]
+x <- c(1, 2, 3, 4, 5, 6)
+x
+makeVector(x)
+cachemean(x)
+is.recursive(x)
+install.packages("swirl")
+library(swirl)#
+swirl()
+5 + 7
+x < 5 + 7
+x <- 5 + 7
+x
+y <- x -3
+y
+z <- c(1.1, 9, 3.14)
+z
+?c
+z
+c(z, 555, z)
+z * 2 + 100
+my_sqrt <- sqrt(z-1)
+my_sqrt
+my_div <- z / my_sqrt
+my_div
+c(1, 2, 3, 4) + c(0, 10)
+c(1, 2, 3, 4) + c(0, 10, 100)
+z * 2 + 1000
+myDIV
+myDiv
+my_div
+getwd()
+ls()
+x <-9
+ls()
+list.files()
+?list.files
+args(list.files())
+args(list.files)
+old.dir <- getwd()
+getwd()
+old.dir <- getwd()
+dir.create("testdir")
+setwd(tesdir)
+setwd(testdir)
+setwd("testdir")
+file.create("mytest.R")
+ls()
+list.files()
+file.exists("mytest.R")
+file.info("mytest.R")
+file.rename("mytest.R", "mytest2.R")
+file.copy("mytest2.R","mytest3.R")
+file.path("mytest3.R")
+file.path(folder1, folder2)
+file.path("folder1", "folder2")
+?dir.create
+dir.create("testdir2","testdir3", recursive = TRUE)
+dir.create(file.path("testdir2","testdir3"), recursive = TRUE)
+unlink("testdir2")
+unlink("testdir2", recursive = TRUE)
+setwd(old.dir)
+unlink("testdir", recursive = TRUE)
+1:20
+pi:10
+15:1
+?`:`
+seq(1, 20)
+seq(0, 10, by = 0.5)
+seq(5, 10, length = 30)
+my_seq <- seq(5, 10, length = 30)
+length(my_seq)
+1:length(my_seq)
+seq(along.with = my_seq)
+seq_along (my_seq)
+rep(0, times = 40)
+rep(c(0, 1, 2), times = 10)
+rep(c(0, 1, 2), each = 10)
+swirl()
+num_vect <- c(0.5, 55, -10, 6)
+tf <- num_vect < 1
+tf
+tf1 <- num_vect >= 6
+num_vect >= 6
+my_char <- c("My", "name", "is")
+my_char
+paste(my_char, collapse = " ")
+c(my_char, "Avinayan")
+my_name <- c(my_char, "Avinayan")
+my_name
+paste(my_char, collapse = " ")
+paste(my_name, collapse = " ")
+paste("Hello", "world!", sep = " ")
+paste(1:3, c("X","Y","Z"), sep = "")
+paste(LETTERS, 1:4, sep = "-")
+x <- c(44, NA, 5, NA)
+x * 3
+y <- rnorm(1000)
+z <- rep(NA, 1000)
+my_data <- sample(c(y, z), 100)
+my_na <- is.na(my_data)
+my_na
+my_data == NA
+sum(my_na)
+my_data
+0/0
+Inf - Inf
+x
+x[1 : 10]
+x[is.na(x)]
+y <- x[!is.na(x)]
+y
+y[y > 0]
+x[x > 0]
+x[!is.na(x) & x > 0]
+x[c(3, 5, 7)]
+x[0]
+x[3000]
+x[c(-2, -10)]
+x[-c(2, 10)]
+vect <- c(foo = 11, bar = 2, narf = NA)
+vect <- c(foo = 11, bar = 2, norf = NA)
+vect
+names(vect)
+vect2 <- c(11, 2, NA)
+names(vect2) <- c("foo", "bar", "norf")
+identical(vect, vect2)
+vect["bar"]
+vect[c("foo", "bar")]
+library(xlsx)
+library(mpg)
+library("mpg")
+dataset
+library(datasets)
+head(mpg)
+head(airquality)
+ls
+ls()
+library(ggplot2)
+qplot(Solar.R, Ozone, data = airquality)
+qplot(Solar.R, Ozone, data = airquality, geom = c("smooth"))
+qplot(Solar.R, Ozone, data = airquality, geom = c("point","smooth"))
+qplot(Solar.R, data = airquality)
+qplot(Solar.R, data = airquality, fill = month)
+qplot(Solar.R, data = airquality, fill = Month)
+str(airquality)
+qplot(Solar.R, data = airquality, fill = as.factor(Month))
+qplot(Solar.R, data = airquality, facets = as.factor(Month))
+qplot(Solar.R, data = airquality, facets = ~ as.factor(Month))
+qplot(Solar.R, data = airquality, facets = . ~ as.factor(Month))
+qplot(Solar.R, Ozone, data = airquality, facets = as.factor(Month))
+qplot(Solar.R, Ozone, data = airquality, facets = ~ .as.factor(Month))
+qplot(Solar.R, Ozone, data = airquality, facets = ~ . Month)
+qplot(Solar.R, Ozone, data = airquality, facets = . ~ Month)
+qplot(Solar.R, Ozone, geom = c("smooth"), data = airquality, facets = . ~ Month)
+qplot(Solar.R, Ozone, data = airquality, facets = Month ~ .)
+qplot(Solar.R, Ozone, data = airquality, geom = c("point","smooth", "density"))
+qplot(Solar.R, Ozone, data = airquality, geom = c("density"))
+qplot(Solar.R, data = airquality, geom = c("density"))
+qplot(Solar.R, data = airquality, geom = c("density", "point"))
+# Run this file from thr RepData_PeerAssessment1 directory#
+# Load the File#
+ActivityData <- read.csv("activity.csv")#
+#
+# Quick Exploration of Data#
+head(ActivityData, 10)#
+str(ActivityData)#
+summary(ActivityData)#
+#
+# Data Processing and Transformation#
+ActivityData$steps <- as.numeric(ActivityData$steps)#
+ActivityData$minutes <- ActivityData$interval %% 100#
+ActivityData$hour <- ActivityData$interval %/% 100#
+ActivityData$interval <- as.factor(ActivityData$interval)#
+#
+str(ActivityData)#
+summary(ActivityData)#
+#
+# Total Number of Steps per day#
+library(reshape2)#
+MeltedActivityData <- melt(ActivityData, id = c("date", "hour", "minutes", "interval"))#
+StepsPerDay <- dcast(MeltedActivityData, date ~ variable, fun.aggregate = sum)#
+StepsPerDay#
+#
+# Histogram for Number of Steps per day#
+png(file = "Histogram1.png")#
+hist(StepsPerDay$steps, main = "Histogram for Steps/Day", xlab = "Steps/Day", ylab = "# of Days",#
+     border = "black", col = "blue")#
+dev.off()#
+#
+# Mean and Median Number of Steps per day#
+mean(StepsPerDay$steps, na.rm = TRUE)#
+median(StepsPerDay$steps, na.rm = TRUE)#
+#
+# Average Number of Steps per interval#
+StepsPerInterval <- dcast(MeltedActivityData, interval ~ variable, fun.aggregate = mean, na.rm = TRUE)#
+StepsPerInterval#
+#
+# Interval with Max Avg number of Steps#
+MaxInterval = which.max(StepsPerInterval$steps)#
+StepsPerInterval[MaxInterval,]#
+#
+# Number of missing values#
+sum(is.na(ActivityData$steps))#
+#
+# Imputing NAs with the median steps for that interval#
+ImputedActivityData <- ActivityData#
+ImputedActivityData[which(is.na(ImputedActivityData$steps)), 1] <- #
+       StepsPerInterval[ImputedActivityData[which(is.na(ImputedActivityData$steps)), 3], 2]#
+#
+# Total Number of Steps per day after Imputing for NAs#
+MeltedImputedData <- melt(ImputedActivityData, id = c("date", "hour", "minutes", "interval"))#
+StepsPerDayImputed <- dcast(MeltedImputedData, date ~ variable, fun.aggregate = sum)#
+StepsPerDayImputed#
+#
+# Histogram for Number of Steps per day after Imputing for NAs#
+png(file = "Histogram2.png")#
+hist(StepsPerDayImputed$steps, main = "Histogram for Steps/Day (NAs Imputed)", xlab = "Steps/Day", ylab = "# of Days",#
+     border = "black", col = "red")#
+dev.off()#
+#
+# Mean and Median Number of Steps per day after Imputing for NAs#
+mean(StepsPerDayImputed$steps, na.rm = TRUE)#
+median(StepsPerDayImputed$steps, na.rm = TRUE)#
+#
+# Add a new variable for Weekday and Weekend#
+ImputedActivityData[weekdays(as.Date(ImputedActivityData$date)) %in% c("Saturday", "Sunday"), 6] <- "Weekend"#
+ImputedActivityData[!weekdays(as.Date(ImputedActivityData$date)) %in% c("Saturday", "Sunday"), 6] <- "Weekday"#
+colnames(ImputedActivityData)[6] <- "day"#
+#
+WeekdayActivityData <- ImputedActivityData[ImputedActivityData$day == "Weekday",]#
+WeekendActivityData <- ImputedActivityData[ImputedActivityData$day == "Weekend",]#
+#
+MeltedWeekdayData <- melt(WeekdayActivityData, id = c("date", "hour", "minutes", "interval", "day"))#
+MeltedWeekendData <- melt(WeekendActivityData, id = c("date", "hour", "minutes", "interval", "day"))#
+#
+WeekdayStepsPerInterval <- dcast(MeltedWeekdayData, interval ~ variable, fun.aggregate = mean, na.rm = TRUE)#
+WeekdayStepsPerInterval#
+WeekendStepsPerInterval <- dcast(MeltedWeekendData, interval ~ variable, fun.aggregate = mean, na.rm = TRUE)#
+WeekendStepsPerInterval
+plot(StepsPerInterval, type = "l")
+plot(StepsPerInterval$interval, StepsPerInterval$steps, type = "l")
